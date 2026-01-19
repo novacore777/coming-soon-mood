@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rehman Ahmad | Coming Soon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #0a0a0a;
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background Grid */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 0, 60, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 0, 60, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Glowing Orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: 1;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #ff003c 0%, transparent 70%);
+            top: -100px;
+            right: -100px;
+            animation: pulse1 8s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #ff6b00 0%, transparent 70%);
+            bottom: -50px;
+            left: -50px;
+            animation: pulse2 10s ease-in-out infinite;
+        }
+
+        .orb-3 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #00d4ff 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse3 6s ease-in-out infinite;
+        }
+
+        @keyframes pulse1 {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.1); }
+        }
+
+        @keyframes pulse2 {
+            0%, 100% { opacity: 0.25; transform: scale(1); }
+            50% { opacity: 0.45; transform: scale(1.15); }
+        }
+
+        @keyframes pulse3 {
+            0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.35; transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        /* Main Container */
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+            padding: 40px 20px;
+        }
+
+        /* Danger Lines */
+        .danger-line {
+            position: fixed;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff003c, transparent);
+            animation: scanLine 3s linear infinite;
+        }
+
+        .danger-line-1 {
+            width: 100%;
+            top: 20%;
+            animation-delay: 0s;
+        }
+
+        .danger-line-2 {
+            width: 100%;
+            top: 80%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes scanLine {
+            0% { opacity: 0; transform: scaleX(0); }
+            50% { opacity: 0.5; transform: scaleX(1); }
+            100% { opacity: 0; transform: scaleX(0); }
+        }
+
+        /* Warning Badge */
+        .warning-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 0, 60, 0.1);
+            border: 1px solid rgba(255, 0, 60, 0.3);
+            padding: 10px 25px;
+            border-radius: 50px;
+            margin-bottom: 40px;
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 60, 0.2); }
+            50% { box-shadow: 0 0 40px rgba(255, 0, 60, 0.4); }
+        }
+
+        .warning-dot {
+            width: 10px;
+            height: 10px;
+            background: #ff003c;
+            border-radius: 50%;
+            animation: blink 1s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .warning-text {
+            color: #ff003c;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* Main Title */
+        .title-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .pre-title {
+            color: #666;
+            font-size: 16px;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(48px, 12vw, 120px);
+            font-weight: 900;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            line-height: 1;
+            text-shadow: 
+                0 0 10px rgba(255, 0, 60, 0.5),
+                0 0 30px rgba(255, 0, 60, 0.3),
+                0 0 50px rgba(255, 0, 60, 0.2);
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 10px rgba(255, 0, 60, 0.5),
+                    0 0 30px rgba(255, 0, 60, 0.3),
+                    0 0 50px rgba(255, 0, 60, 0.2);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 20px rgba(255, 0, 60, 0.8),
+                    0 0 50px rgba(255, 0, 60, 0.5),
+                    0 0 80px rgba(255, 0, 60, 0.3);
+            }
+        }
+
+        .title-accent {
+            color: #ff003c;
+        }
+
+        /* Subtitle */
+        .subtitle {
+            color: #888;
+            font-size: clamp(18px, 3vw, 28px);
+            font-weight: 300;
+            letter-spacing: 4px;
+            margin-top: 20px;
+        }
+
+        /* Coming Soon Section */
+        .coming-soon-section {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .coming-soon-label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(14px, 2vw, 18px);
+            color: #00d4ff;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            animation: flicker 4s ease-in-out infinite;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            92% { opacity: 1; }
+            93% { opacity: 0.3; }
+            94% { opacity: 1; }
+            96% { opacity: 0.5; }
+            97% { opacity: 1; }
+        }
+
+        .launch-text {
+            font-size: clamp(32px, 6vw, 60px);
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+        }
+
+        .launch-text::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ff003c, transparent);
+        }
+
+        /* Description */
+        .description {
+            max-width: 600px;
+            text-align: center;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .description p {
+            color: #999;
+            font-size: 18px;
+            line-height: 1.8;
+            letter-spacing: 1px;
+        }
+
+        .highlight {
+            color: #ff003c;
+            font-weight: 600;
+        }
+
+        /* Feature Cards */
+        .features {
+            display: flex;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            width: 200px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #ff003c, #ff6b00);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 0, 60, 0.05);
+            border-color: rgba(255, 0, 60, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: auto;
+            padding-top: 50px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            text-decoration: none;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            border-color: #ff003c;
+            color: #ff003c;
+            box-shadow: 0 0 20px rgba(255, 0, 60, 0.3);
+        }
+
+        .copyright {
+            color: #444;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        .copyright span {
+            color: #ff003c;
+        }
+
+        /* Glitch Effect */
+        .glitch {
+            position: relative;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            animation: glitch-1 2s infinite linear alternate-reverse;
+            color: #00d4ff;
+            z-index: -1;
+        }
+
+        .glitch::after {
+            animation: glitch-2 3s infinite linear alternate-reverse;
+            color: #ff003c;
+            z-index: -2;
+        }
+
+        @keyframes glitch-1 {
+            0%, 100% { clip-path: inset(0 0 95% 0); transform: translate(-2px, 2px); }
+            20% { clip-path: inset(30% 0 40% 0); transform: translate(2px, -2px); }
+            40% { clip-path: inset(70% 0 10% 0); transform: translate(-2px, 2px); }
+            60% { clip-path: inset(10% 0 80% 0); transform: translate(2px, -2px); }
+            80% { clip-path: inset(50% 0 30% 0); transform: translate(-2px, 2px); }
+        }
+
+        @keyframes glitch-2 {
+            0%, 100% { clip-path: inset(95% 0 0 0); transform: translate(2px, -2px); }
+            20% { clip-path: inset(40% 0 30% 0); transform: translate(-2px, 2px); }
+            40% { clip-path: inset(10% 0 70% 0); transform: translate(2px, -2px); }
+            60% { clip-path: inset(80% 0 10% 0); transform: translate(-2px, 2px); }
+            80% { clip-path: inset(30% 0 50% 0); transform: translate(2px, -2px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .features {
+                gap: 15px;
+            }
+            
+            .feature-card {
+                width: 150px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="danger-line danger-line-1"></div>
+    <div class="danger-line danger-line-2"></div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Warning Badge -->
+        <div class="warning-badge">
+            <div class="warning-dot"></div>
+            <span class="warning-text">Under Construction</span>
+        </div>
+
+        <!-- Title Section -->
+        <div class="title-container">
+            <p class="pre-title">Welcome to the future</p>
+            <h1 class="main-title glitch" data-text="REHMAN AHMAD">
+                REHMAN <span class="title-accent">AHMAD</span>
+            </h1>
+            <p class="subtitle">Digital Excellence Awaits</p>
+        </div>
+
+        <!-- Coming Soon Section -->
+        <div class="coming-soon-section">
+            <p class="coming-soon-label">⚡ Launching Very Soon ⚡</p>
+            <h2 class="launch-text">Something Extraordinary</h2>
+        </div>
+
+        <!-- Description -->
+        <div class="description">
+            <p>
+                We are crafting an <span class="highlight">exceptional digital experience</span> 
+                that will redefine boundaries. Our team is working relentlessly to bring you 
+                something <span class="highlight">revolutionary</span>. Stay tuned for the unveiling 
+                of a new era in innovation and excellence.
+            </p>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <p class="feature-title">Innovation</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <p class="feature-title">Speed</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <p class="feature-title">Precision</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔥</div>
+                <p class="feature-title">Power</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="social-links">
+                <a href="#" class="social-link">𝕏</a>
+                <a href="#" class="social-link">in</a>
+                <a href="#" class="social-link">@</a>
+            </div>
+            <p class="copyright">© 2025 <span>REHMAN AHMAD</span>. All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
